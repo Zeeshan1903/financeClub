@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/slider.css">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	
+    <title>IIT Palakkad IAC 6.0</title>
+    
+    <style>
+      #speakers {
+        background-color: var(--bg-color2);
+        padding: 40px 0;
+        justify-content: center;
+        
+    }
+    .event-card {
+      background-color: #9195a2;; /* Light golden color */
+      border-radius: 10px; /* Rounded corners */
+      padding: 15px; /* Inner padding */
+      transition: transform 0.1s ease, opacity 0.5s ease; /* Transition for animations */
+      opacity: 0; /* Initially hidden */
+  }
+  
+  .visible {
+      opacity: 1; /* Fully visible when scrolled into view */
+  }
+  
+    
+  body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sponsors-container {
+          display: flex;
+           
+          justify-content: center; /* Center horizontally */
+
+          gap: 40px; /* Space between sponsor items */
+           
+          padding: 20px;
+
+          padding-right: 30px;
+        
+          flex-wrap: wrap; /* Allows items to wrap to the next line if needed */
+           
+          align-items: center; /* Vertically center items if they have different heights */
+          
+      }
+
+
+        
+      .sponsor {
+
+          text-align: center;
+  
+          height: 200px;
+          margin-left: 20px;
+
+      }
+        .sponsor img {
+
+            max-width: 300px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+      
+      
+
+
+        
+      .sponsor-name {
+            margin-top: 5px; 
+      
+            font-size: 30px;
+       
+            font-weight: bold;
+
+            color: #333;
+
+
+
+
+      }
+      
+    
+    .paragraph {
+        color: white; /* Keep the text color white */
+        opacity: 0.5; /* Default opacity */
+        transition: opacity 0.1s; /* Smooth transition for opacity change */
+    }
+    
+  .paragraph.active {
+      opacity: 1; /* Full opacity for active paragraph */
+  }
+  #events {
+    position: relative;
+    padding: 50px 0;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10; /* Ensure arrows are above slides */
+}
+
+.left-arrow {
+  left: 10px; /* Position the left arrow */
+}
+
+.right-arrow {
+  right: 10px; /* Position the right arrow */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.events-container {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack the header and grid */
+    align-items: center; /* Center the items */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+    grid-template-rows: repeat(4, auto); /* 4 rows */
+    gap: 20px; /* Space between the grid items */
+    width: 100%; /* Full width for the grid */
+}
+
+.card {
+  background-color: white; /* Start with white background */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Smooth transition for all */
+}
+
+.card.visible {
+  background-color: rgba(255, 223, 186, 0.8); /* Light golden color on scroll */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card.active {
+  background: #e0f7fa; /* Highlight color for active card */
+}
+
+.card-content {
+  width: 100%; /* Full width for content */
+  padding: 20px; /* Padding inside each card content */
+}
+
+.card-content.left {
+  text-align: left;
+}
+
+.card-content.right {
+  text-align: right;
+}
+
+.card-description {
+  padding-bottom: 20px; /* Add padding to the bottom of the description */
+}
+
+.empty-cell {
+  background: transparent; /* Empty cells are transparent */
+  border: none; /* No border for empty cells */
+}
+
+
+.pointer {
+    position: absolute;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: red; /* Pointer color */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 0.1s;
+}
+.cgspeaker-card {
+  padding: 20px;
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+  opacity: 0.9;
+  position: relative;
+  background-color: #ffffff; /* Light background for contrast */
+  margin: 20px 0; /* Space between cards */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.cgspeaker-card:hover {
+  opacity: 1;
+  box-shadow: 0 8px 16px rgba(255, 215, 0, 0.6); /* Glowing effect */
+  transform: scale(1.05);
+}
+
+.image-container2 img {
+  border-radius: 50%; /* Circular image */
+  border: 4px solid #ffad00; /* Border around the image */
+}
+
+
+  
+    
+    .speaker-card {
+        padding: 15px;
+        transition: opacity 0.1s, transform 0.1s;
+        opacity: 0.5;
+        position: relative;
+        margin: 20px 0; /* Space between cards */
+        border-radius: 8px; /* Optional: Rounded corners */
+    }
+    
+    .speaker-card.active {
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); /* Glowing effect */
+        transform: scale(1.03);
+    }
+    
+    .dotted-line {
+        border-top: 2px dotted #ccc;
+        margin: 15px 0;
+    }
+    
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: top;
+    }
+    
+    .image-container img {
+        max-width: 100%;
+        height: auto; /* Adjusts height based on width */
+        object-fit: cover; /* Maintain aspect ratio */
+        border-radius: 8px; /* Optional: Rounded corners */
+        transition: transform 0.1s; /* Transition effect for hover */
+    }
+    
+    .image-container:hover img {
+        transform: scale(1.05); /* Scale effect on hover */
+    }
+    /* Preloader Styles */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff; /* You can change the background color */
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  #preloader img {
+      width: 700px; /* Adjust the size of the GIF */
+      height: auto;
+  }
+  
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db; /* Change the color to fit your site */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+/* CARD COMPONENT */
+body{
+  overflow-x: hidden;
+}
+.cardtalk {
+  display: grid;
+  place-items: center;
+  /* width: 80vw; */
+  max-width: 18rem;
+  height: 30rem;
+  overflow: hidden;
+  border-radius: 0.625rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  margin: 25px;
+}
+
+.cardtalk > * {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.card__background {
+  object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+}
+
+.card__content {
+  --flow-space: 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-end;
+  height: 75%;
+  padding: 12% 1.25rem 1.875rem;
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 0%, 0) 0%,
+    hsla(0, 0%, 0%, 0.3) 10%,
+    hsl(0, 0%, 0%) 100%
+  );
+}
+
+.card__content--container {
+  --flow-space: 1.25rem;
+}
+
+.card__title {
+  position: relative;
+  width: fit-content;
+  width: -moz-fit-content;
+}
+
+.card__title::after {
+  content: "";
+  position: absolute;
+  height: 0.3125rem;
+  width: calc(100% + 1.15rem);
+  bottom: calc((1.25rem - 0.5rem) * -1);
+  left: -1.25rem;
+  background-color: hsl(46, 100%, 50%);
+}
+
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  .card__content {
+    transform: translateY(62%);
+    transition: transform 500ms ease-out;
+    transition-delay: 500ms;
+  }
+
+  .card__title::after {
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 1000ms ease-in, transform 500ms ease-out;
+    transition-delay: 500ms;
+    transform-origin: right;
+  }
+
+  .card__background {
+    transition: transform 500ms ease-in;
+  }
+
+  .card__content--container > :not(.card__title) {
+    opacity: 0;
+    transition: transform 500ms ease-out, opacity 500ms ease-out;
+  }
+
+  .cardtalk:hover,
+  .cardtalk:focus-within {
+    transform: scale(1.05);
+    transition: transform 500ms ease-in;
+  }
+
+  .cardtalk:hover .card__content,
+  .cardtalk:focus-within .card__content {
+    transform: translateY(0);
+    transition: transform 500ms ease-in;
+  }
+
+  .cardtalk:focus-within .card__content {
+    transition-duration: 0ms;
+  }
+
+  .cardtalk:hover .card__background,
+  .cardtalk:focus-within .card__background {
+    transform: scale(1.2);
+  }
+
+  .cardtalk:hover .card__content--container > :not(.card__title),
+  .cardtalk:hover .card__button,
+  .cardtalk:focus-within .card__content--container > :not(.card__title),
+  .cardtalk:focus-within {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+    transition-delay: 1000ms;
+  }
+
+  .cardtalk:hover .card__title::after,
+  .cardtalk:focus-within .card__title::after {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: opacity 500ms ease-in, transform 500ms ease-in;
+    transition-delay: 500ms;
+  }
+}
+
+@media (max-width: 768px) {
+  .card__content {
+    transform: translateY(62%);
+    transition: transform 500ms ease-out;
+    transition-delay: 500ms;
+  }
+
+  .card__title::after {
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 1000ms ease-in, transform 500ms ease-out;
+    transition-delay: 500ms;
+    transform-origin: right;
+  }
+
+  .card__background {
+    transition: transform 500ms ease-in;
+  }
+
+  .card__content--container > :not(.card__title) {
+    opacity: 0;
+    transition: transform 500ms ease-out, opacity 500ms ease-out;
+  }
+
+  .cardtalk:hover,
+  .cardtalk:focus-within {
+    transform: scale(1.05);
+    transition: transform 500ms ease-in;
+  }
+
+  .cardtalk:hover .card__content,
+  .cardtalk:focus-within .card__content {
+    transform: translateY(0);
+    transition: transform 500ms ease-in;
+  }
+
+  .cardtalk:focus-within .card__content {
+    transition-duration: 0ms;
+  }
+
+  .cardtalk:hover .card__background,
+  .cardtalk:focus-within .card__background {
+    transform: scale(1.2);
+  }
+
+  .cardtalk:hover .card__content--container > :not(.card__title),
+  .cardtalk:hover .card__button,
+  .cardtalk:focus-within .card__content--container > :not(.card__title),
+  .cardtalk:focus-within  {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+    transition-delay: 1000ms;
+  }
+
+  .cardtalk:hover .card__title::after,
+  .cardtalk:focus-within .card__title::after {
+    opacity: 1;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: opacity 500ms ease-in, transform 500ms ease-in;
+    transition-delay: 500ms;
+  }
+}
+.talkmain{
+  display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ width: 100vw;
+}
+.talkmain h2 {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  line-height: 1.1;
+}
+.talkmain p {
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: white;
+}
+.talkmain body,
+h2,
+p {
+  margin: 0;
+}
+.fosm{
+  font-size: 8px;
+}
+
+.viscontainer {
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 35px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+.viscontainer .viscard {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 0 auto;
+  /* background: #000; */
+  background-image: linear-gradient(to bottom, #f8a1e2, #FFFFE0);
+  
+  border-radius: 15px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+.viscontainer .viscard .visface {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.viscontainer .viscard .visface.visface1 {
+  box-sizing: border-box;
+  padding: 20px;
+}
+.viscontainer .viscard .visface.visface1 span {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.viscontainer .viscard .visface.visface1 .txt {
+  background-color: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.viscontainer .viscard .visface.visface2 {
+  transition: 0.5s;
+}
+.viscontainer .viscard .visface.visface2 h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  transition: 0.5s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: rgb(71, 10, 58);
+  z-index: 10;
+}
+.viscontainer .viscard:hover .visface.visface2 {
+  height: 60px;
+}
+
+
+.viscontainer .viscard .visface.visface2 {
+  background: #fdd2f2;
+  border-radius: 15px;
+}
+.ab{
+  padding-left: 10px;
+}
+
+    </style>
+</head>
+<body>
+  <div id="preloader">
+    <img src="assets/preloader.gif" alt="Loading...">
+</div>
+
+
+    <header id="header" class="d-flex align-items-center ">
+        <div class="container-fluid d-flex align-items-center">
+    
+          <div id="logo" style="margin-right: auto!important;">
+            <a href="index.html" class="scrollto">
+              <img src="assets/img/logo.png" alt="" title="">
+            </a>
+            <img class="logo-text" src="assets/img/logotext.png" alt="" title="" style="padding: 10px 0px;">
+          </div>
+    
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+              <li><a class="nav-link " href="#hero">Home</a></li>
+              <li><a class="nav-link " href="#about">About</a></li>
+              <li class="dropdown"><a class="nav-link scrollto" href="#events"><span>Events</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a class="nav-link " href="#speakers">KeyNote Speakers</a></li>
+                  <li><a class="nav-link " href="#events">Lecture Series</a></li>
+                  <li><a class="nav-link " href="#events">Exhibition</a></li>
+                  <li><a class="nav-link " href="#events">Startup Booths</a></li>
+                  <li><a class="nav-link " href="#events">Panel discussion</a></li>
+                </ul>
+              </li>
+    
+              <li><a class="nav-link " href="#gallery">Glimpses</a></li>
+              <li><a class="nav-link " href="#supporters">Sponsors</a></li>
+	      <li><a class="nav-link " href="#supporters">Support Partners</a></li>
+    
+              <li><a class="nav-link " href="#team">Meet the Team</a></li>
+              <li><a class="nav-link " href="#reach-us">Reach Us</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+    
+        </div>
+      </header>
+
+    <section id="hero">
+        <div class="hero-container">
+            <h1 class="mb-4 pb-0">Industry<br><span>Academia</span> Conclave <br><span>IAC 6.0</span></h1>
+            <p class="mb-4 pb-0">20-21 September 2024, IIT Palakkad, Kerala</p>
+        </div>
+    </section>
+
+    <section id="about">
+      <div class="left" style="z-index: 2; color: var(--bg-color);" data-aos="fade-up">
+          <h1>About IAC</h1>
+      </div>
+      <p class="right wi-50 paragraph" data-aos="fade-up" style="font-size: 1.275rem" >
+          The Industrial Academia Conclave (IAC) at IIT Palakkad is a flagship event that bridges 
+          the gap between academic research and industrial application. As a vibrant platform where 
+          innovation meets expertise, our mission is to bridge the gap between industry and academia, 
+          fostering meaningful connections and progress.
+      </p>
+  
+      <p class="left wi-50 paragraph" data-aos="fade-up" style="font-size: 1.275rem">
+          At IAC, we believe in the power of collaboration to shape the future. Our events, including 
+          panel discussions, lecture series and talks by Industry leaders, and exhibitions, are designed 
+          to inspire, educate, and connect. From exploring cutting-edge technologies to addressing real-world 
+          challenges, our programs facilitate a rich exchange of ideas and perspectives.
+      </p>
+  
+      <p class="right wi-50 paragraph" data-aos="fade-up" style="font-size: 1.275rem">
+          IAC is where potential is realized, innovation knows no limits, and connections ignite fresh ideas. 
+          This is more than just a platform—it's a catalyst for change, where collective expertise drives impactful 
+          outcomes. Whether you're an industry professional, academic, or innovator, IAC offers the ideal environment 
+          to connect, learn, and grow.
+      </p>
+  
+      <p class="left wi-50 paragraph" data-aos="fade-up" style="font-size: 1.275rem">
+          <strong style="color: var(--bg-color);">Where:</strong><br>
+          Sahyadri-Nila Campus, IIT Palakkad<br><br>
+          <strong style="color: var(--bg-color);">When:</strong><br>
+          Friday, Saturday<br>
+          20-21 September
+      </p>
+  </section>
+  <section id="chief-guest" style="background-color: var(--bg-color2); padding: 50px 0;">
+    <div class="section-header text-center" data-aos="fade-up">
+        <h2>Meet Our Chief Guest</h2>
+    </div>
+
+    <div class="container-fluid my-5" style="width: 93%;">
+        <!-- Chief Guest Card -->
+        <div class="cgspeaker-card" data-aos="fade-up">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="image-container2">
+                        <img src="assets/img/cg.png" alt="Dr. Sreenivas Naidu">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h2 style="font-size: 2.5rem; color:#ffad00;">Dr. Sreenivas Naidu</h2>
+                    <p style="font-size: 1.2rem; color:#333333;">
+                        Dr. Sreenivas Naidu is a visionary leader in Research and Development, with a remarkable career spanning over two decades in mechanical engineering. His extensive experience includes pivotal roles in wind energy, rail, off-highway machinery, steel, and bearings industries. 
+
+                        Renowned for his mechanical design and product development expertise, Dr. Naidu has driven innovation through finite element analysis and application engineering. His leadership in the Rail Application Engineering team at Timken Engineering and Research India has set a benchmark for excellence in supporting railway systems globally. 
+
+                        Under his guidance, the Advanced Analysis team has excelled in delivering solutions for sectors such as wind energy, automotive, aerospace, and primary metals. Dr. Naidu's contributions include developing cutting-edge engineering tools and managing complex projects involving off-highway equipment and high-performance engines.
+
+                        Beyond his technical prowess, Dr. Naidu is known for his dedication to customer training, condition monitoring systems, and organizing impactful trade shows and seminars. His profound expertise and leadership continue to inspire innovation and set new standards across various engineering disciplines.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+  <section id="speakers" style="background-color: var(--bg-color2);">
+    <div class="section-header" data-aos="fade-up">
+        <h2>KeyNote Speakers</h2>
+    </div>
+
+    <div class="container-fluid my-5" style="width: 93%;">
+        <!-- First Keynote Speaker -->
+        <div class="speaker-card" data-aos="fade-up">
+            <div class="row align-items-center mb-4">
+                <div class="col-md-3">
+                    <div class="image-container">
+                        <img src="assets/img/sreedevi.jpg" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <h2 style="font-size: 1.85rem;">Dr. Sreedevi Upadhyayula</h2>
+                    <p style="font-size: 1rem; color:#ffad00;">
+                      <b>THERMOCHEMICAL WATER SPLITTING PROCESS DEVELOPMENT – A Case of Industry-Academia Nexus</b></p>
+                     <p style="font-size: 1rem;">
+                      In her talk, Dr. Upadhyayula will explore the promising potential of thermochemical cycles for water splitting as a sustainable method for large-scale hydrogen production. She will review various hydrogen production routes through thermochemical and hybrid cycles, discussing recent advances, major challenges, and future directions related to their design and scale-up. The focus will be on an efficient thermochemical process developed and demonstrated at IIT Delhi, supported by a long-term collaboration with the ONGC Energy Centre, showcasing a 15-year journey from ideation to technology demonstration.<br>
+                      Dr. Sreedevi Upadhyayula is a distinguished chemical engineer with extensive experience spanning both industry and academia. She earned her M.Tech in Chemical Engineering from IIT Kharagpur and began her career as a Senior Design Engineer in the public and private sectors. Following a PhD from the National Chemical Laboratory (NCL), Pune, and postdoctoral research at the University of Notre Dame, she joined IIT Kharagpur as an Assistant Professor. Currently, she holds the CLASS of 66 Chair Professor position at IIT Delhi.
+
+                      
+                    </p>
+                </div>
+            </div>
+        </div>
+<br>
+        <!-- Second Keynote Speaker -->
+        <div class="speaker-card" data-aos="fade-up">
+            <div class="row align-items-center">
+                <div class="col-md-3 ">
+                    <div class="image-container">
+                        <img src="assets/img/satya.jpg" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-md-9 order-md-1">
+                    <h2 style="font-size: 1.85rem;">Dr. Satya Chakravarthy</h2>
+                    <p style="font-size: 1rem;">
+                        Dr. Satya Chakravarthy is a Professor of Aerospace Engineering at IIT Madras, where he has been a faculty member 
+                        since 1997. He earned his B.Tech from IIT Madras and M.S. and Ph.D. from Georgia Tech, USA. His research focuses 
+                        on propulsion and combustion in gas turbines, rocket engines, and electric aircraft. He leads the National Centre 
+                        for Combustion Research & Development (NCCRD) at IIT Madras, the largest center of its kind globally, and the DRDO 
+                        Centre of Propulsion Technology. He has received several prestigious awards, including the HAL Prize, the Young Engineer 
+                        Award by the Indian National Academy of Engineering, and the DRDO Academic Excellence Award.<br><br>
+
+                        Beyond academia, Dr. Chakravarthy is the Founder and Technical Lead of The ePlane Company, which is developing hybrid 
+                        aerial vehicles. He is also a director at Agnikul Cosmos and Aerostrovilos, focusing on space and power generation technologies, 
+                        respectively. Additionally, he mentors Team Avishkar Hyperloop at IIT Madras and advises several tech startups, including NewTrace 
+                        and GalaxEye. Dr. Chakravarthy is an accomplished speaker with TEDx talks and numerous online lectures, sharing his expertise in 
+                        combustion and aerospace engineering with a global audience.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="speaker-card" data-aos="fade-up">
+          <div class="row align-items-center mb-4">
+              <div class="col-md-3">
+                  <div class="image-container">
+                      <img src="https://media.licdn.com/dms/image/v2/D4D03AQFy5wpcCEy9CA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1713722844416?e=1731542400&v=beta&t=Av5RKy82-Zf5o91eHL6arer7knI50vDsXRcpy7LJf9Q" class="img-fluid" alt="">
+                  </div>
+              </div>
+              <div class="col-md-9">
+                  <h2 style="font-size: 1.85rem;">Mr. Shaik Aleem Ur Rehaman</h2>
+                  <p style="font-size: 1rem; color:#ffad00;">
+                    <b>Evolution of Modern SoC Architectures for AI/ML Workload and High Bandwidth Computations</b></p>
+                  <p style="font-size: 1rem;">
+                    In his upcoming talk, Mr. Aleem will delve into the latest trends in processors, memory, and fabrics, highlighting the essential skills needed for students and researchers aiming to excel in this domain. He will shed light on open-source tools and AI-based infrastructure for chip design and verification, as well as discuss government and industry initiatives in India that are driving semiconductor growth. The session will feature a fireside chat and Q&A, offering valuable insights and practical guidance for those interested in the semiconductor industry.</p>
+                    He is a distinguished ASIC Design and Verification Engineer with over 8 years of experience at the forefront of semiconductor technology. Currently at Microsoft, Aleem specializes in IP/Sub-System and SoC level design, with a focus on ultra-low-power dual-band radio chips and WiFi protocol verification. His expertise includes working with ARM Cortex processors, flash memory, and advanced verification methodologies.
+              </div>
+          </div>
+    </div>
+    <br>
+	    <div class="speaker-card" data-aos="fade-up">
+          <div class="row align-items-center mb-4">
+              <div class="col-md-3">
+                  <div class="image-container">
+                      <img src="https://media.licdn.com/dms/image/v2/D5603AQFBAZqVuRm-3w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1694534878239?e=1731542400&v=beta&t=fOfqyk9j3bgY7Er-eMU8EFjmGcolHEDSODS40ay1tM0" class="img-fluid" alt="">
+                  </div>
+              </div>
+              <div class="col-md-9">
+                  <h2 style="font-size: 1.85rem;">Mr. Nahar Singh</h2>
+                  
+                    <p style="font-size: 1rem; color:#ffad00;">
+                      <b>AI Trends in Automotive Field</b></p>
+                    <p style="font-size: 1rem;">
+                      In his talk, Mr. Nahar will explore how AI is revolutionizing the automotive industry, making vehicles smarter, safer, and more efficient. He will discuss the latest trends in Generative AI (GenAI), highlighting advancements in vehicle design, prototyping, personalization, testing, simulation, and production optimization. Attendees can expect insights into current AI trends in the automotive field, as well as practical examples of how AI is reshaping the driving and ownership experience.<br>
+                      He is a seasoned professional and an alumnus of IIT Guwahati, currently advancing innovations at Continental. With extensive experience in autonomous driving, security, safety, and Industry 4.0, Nahar excels in integrating AI solutions across edge devices and cloud platforms. His expertise includes machine learning, image processing, and computer vision, driving successful projects with a focus on cutting-edge technology.</p>              </div>
+          </div>
+      </div>
+</section>
+
+<section>
+<!-- <section id="spk" style="padding-bottom: 420px;"></section> -->
+<div class="section-header" data-aos="fade-up">
+  <h2>Lecture series and talks</h2>
+</div>
+  <div id= "talks" class="section-header talkmain" data-aos="fade-up">
+      <!-- <h2>Lecture Series </h2> -->
+      <article class="cardtalk">
+        <img
+          class="card__background"
+          src="https://i1.rgstatic.net/ii/profile.image/272799713460258-1442051929002_Q512/Sanjay-Kamble-5.jpg"
+          alt="Dr Sanjay Kamble"
+          width="1920"
+          height="2200"/>
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">DR. SANJAY KAMBLE</h2>
+
+            <h6 style="color: orange; opacity: 1; font-weight: bold;"> Case studies on process transformation from laboratory scale to commercial scale</h6>
+              <p class="card__description">
+                CSIR-National Chemical Laboratory has strong capabilities in developing innovative processes and products for import substitution across various segments of the chemical industry. CSIR-NCL has developed innovative processes for import substitution in the chemical industry. Their work on flow reactors, continuous processes, and reactive distillation has improved performance, safety, and sustainability. This talk will present case studies for paracetamol, IBB, BPA, and plastic waste depolymerization.
+            </p>
+          </div>
+
+        </div>
+      </article>
+      <article class="cardtalk">
+        <img
+        class="card__background"
+        src="https://gtl.csa.iisc.ac.in/gamearts/wp-content/uploads/2024/06/SiddharthaGadgil-300x300.jpg"
+        alt="sd"
+        width="1920"
+        height="2200"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">DR. Siddhartha Gadgil</h2>
+
+            <h6 style="color: orange; opacity: 1; font-weight: bold;"> The future of Automated and Interactive Theorem Proving</h6>
+            <p class="card__description">
+              Automated and Interactive Theorem proving is the discovery and verification of mathematical proofs with the help of computers. This has grown rapidly in the last few years and has been increasingly adopted in industry. Automated Theorem Proving very naturally complements Generative AI, which as we all know is powerful but unreliable. I will discuss the prospects of Automated Theorem Proving aiding and aided by generative AI, especially in Industry.
+            </p>
+
+          </div>
+        </div>
+      </article>
+      <article class="cardtalk">
+        <img
+        class="card__background"
+        src="https://www.cmi.ac.in/~sourish/images/sourish.jpg"
+        alt="sd"
+        width="1920"
+        height="2200"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">DR. SOURISH DAS</h2>
+
+            <h6 style="color: orange; opacity: 1; font-weight: bold;">Doing Mathematics in the Era of Generative AI</h6>
+
+            <p class="card__description fosm" style="font-size: 11px;">
+              In this talk, I will demonstrate how we can leverage generative AI tools, such as ChatGPT, to enhance our approach to mathematics. We will explore how to automate some of the mundane tasks in academic life using ChatGPT, thereby significantly boosting productivity for academicians. These techniques are also valuable for professionals in the corporate sector, particularly for those involved in coding, data analysis, and report writing. Finally, I will discuss the implications of Generative AI on our roles in society and what our place might be in this rapidly evolving landscape.
+            </p>
+          </div>
+        </div>
+      </article>
+      <article class="cardtalk">
+        <img
+        class="card__background"
+        src="https://scholar.googleusercontent.com/citations?view_op=view_photo&user=Eqf8NrEAAAAJ&citpid=11"
+        alt="sd"
+        width="1920"
+        height="2200"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">Dr. BROJESHWAR BHOWMICK</h2>
+            <h6 style="color: orange; opacity: 1; font-weight: bold;">Clothing Dynamics on 3D people</h6>
+            <p class="card__description">
+              This talk will present a novel approach to 3D human digitization and garment simulation. We will discuss how SMPL body parameterization can be used to capture human motion from monocular video and how this data can be leveraged to train a particle-based neural garment simulator. Our method overcomes limitations of existing approaches by learning the physical dynamics of garment vertices conditioned on underlying body shape, motion, and fabric properties, enabling generalization across various garment types, topologies, and fabric materials.
+            </p>
+          </div>
+        </div>
+      </article>
+      
+      
+      
+      
+      <article class="cardtalk">
+        <img
+        class="card__background"
+        src="https://assets.foleon.com/eu-central-1/de-uploads-7e3kk3/6245/4.2a6b70561169.jpg?mhodLoNBa6Ddnf6A0jIyicbk3JIQZuyg2g3n3fIsE%22,"
+        alt="sd"
+        width="1920"
+        height="2200"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+
+            <h2 class="card__title">DR. Subho</h2>
+            <h6 style="color: orange; opacity: 1; font-weight: bold;">Fostering Industry - Academia collaboration - A Pharmaceutical Perspective</h6>
+
+            <p class="card__description">
+              Starting with a brief history of medicine the talk will walk you through various avenues of drug discovery and development, the Indian perspectives, requirements for knowledge sharing between industry and academia, bottlenecks and opportunities, role of a service provider in accelerating the process of discovery and development
+            </p>
+          </div>
+        </div>
+      </article>
+      
+      
+      
+
+      <article class="cardtalk">
+        <img
+          class="card__background"
+          src="https://media.licdn.com/dms/image/v2/C5103AQHKAFbwwWPzgQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516498170187?e=1731542400&v=beta&t=NwIvolxPpxeHfdRbLUW4q7oT1UYy9f6xEJ44WgwLaQY"
+          alt="sd"
+          width="1920"
+          height="2200"
+          />
+          <div class="card__content | flow">
+            <div class="card__content--container | flow">
+              <h2 class="card__title">Mr. Sudeep Chandrasekaran</h2>
+              <h6 style="color: orange; opacity: 1; font-weight: bold;"> Introduction to mmWave Radar </h6>
+              <p class="card__description">
+                Software Engineer at Texas Instruments
+              </p>
+            </div>
+          </div>
+      </article>
+
+
+
+
+      <article class="cardtalk">
+        <img
+        class="card__background"
+        src="assets/img/Raghunath N Photo 2022.JPG"
+        alt="sd"
+        width="1920"
+          height="2200"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">Mr. N. Raghunath</h2>
+            <h6 style="color: orange; opacity: 1; font-weight: bold;">Evolution of Mobile Networks towards Cloud RAN and ORAN - Opportunities and Challenges</h6>
+            <p class="card__description">
+
+              The evolution of mobile networks from LTE to 5G has been driven by data consumption and technological advancements. While 3GPP standards focus on radio protocols, Cloud RAN and O-RAN aim to improve network efficiency and flexibility. Cloud RAN centralizes and virtualizes base station functions, while O-RAN promotes open interfaces and multi-vendor options. This evolution presents opportunities for innovation and new applications but also poses challenges for the technical community.
+            </p>
+
+          </div>
+        </div>
+      </article>
+      
+      
+      
+      
+      <article class="cardtalk">
+        <img
+          class="card__background"
+          src="https://maritimeresearchcenter.com/wp-content/uploads/2023/04/Dr-Ashish-Kuvelkar-1024x683.jpg"
+          alt="sd"
+          width="1720"
+          height="2000"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">Mr ASHISH KUVELKAR</h2>
+
+            <h6 style="color: orange; opacity: 1; font-weight: bold;">High Performance Computing - A Tool for Scientific Advancement</h6>
+
+            <p class="card__description">
+              The talk will introduce the basics of High Performance Computing, how it serves the purpose of addressing the computational needs of scientific community, what are the methodologies used for making effective utilization of HPC, the HPC landscape in India and options available for the researchers for availing HPC services of National Supercomputing Mission.
+            </p>
+          </div>
+        </div>
+      </article>
+      <article class="cardtalk">
+        <img
+          class="card__background"
+          src="https://media.licdn.com/dms/image/v2/D5603AQF_-f3psbvzpg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1715444720858?e=1731542400&v=beta&t=w8IocvJVp-keqlu0BVYSTl-V58EzjxR8IptuG_MHZXA"
+          alt="sd"
+          width="1920"
+          height="2200"
+          />
+          <div class="card__content | flow">
+            <div class="card__content--container | flow">
+              <h2 class="card__title">Dr. KAUSHIK CHOUDHURY</h2>
+
+              <h6 style="color: orange; opacity: 1; font-weight: bold;">From Concept to Creation: The Journey of a Product</h6>
+
+              <p class="card__description fosm" style="font-size: 11px;">
+                We are living in an era of innovation. We are the generation that has transitioned from audio cassettes to CDs to DVDs to SD cards and then cloud music.Interestingly students pursuing research-oriented or research-driven courses are the best suited individuals for developing products, yet we do not see many of them doing that. This talk will be focusing on how research could be looked upon as a precursor to product development and entrepreneurship. It will also have some aspects about successful products to give an insight as to how creative thinking makes a product last longer than its expected lifetime.
+            </p>
+          </div>
+        </div>
+      </article>
+      <article class="cardtalk">
+        <img
+          class="card__background"
+          src="https://media.licdn.com/dms/image/v2/D4D03AQG3pORQBdoryA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1708876648557?e=1731542400&v=beta&t=EkCLIPuBwyIhaMc7tO4zQdmJRDNHfp5368X0mwwQwfw"
+          alt="sd"
+          width="1920"
+          height="2200"
+          />
+          <div class="card__content | flow">
+            <div class="card__content--container | flow">
+              <h2 class="card__title">Dr. KAVITA KADU</h2>
+
+              <h6 style="color: orange; opacity: 1; font-weight: bold;">Revolutionizing Sustainability: Shaping the Future of Circular Economy and Climate Tech</h6>
+
+              <p class="card__description" style="font-size: 14px;">
+                APChemi stands at the forefront of combating two of the world's most pressing environmental challenges: plastic pollution and carbon emissions. As a leader in advanced recycling and carbon sequestration technologies, we offer innovative solutions that are transforming waste into valuable resources.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="cardtalk">
+          <img
+          class="card__background"
+          src="https://media.licdn.com/dms/image/v2/C4D03AQHLLtS0e3oAGg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1656151032120?e=1731542400&v=beta&t=iPg0p7wCy9Uo8Eve048SBQ-FeA6OAnJe8e-jnJ-qWMQ"
+          alt="sd"
+          width="1920"
+          height="2200"
+          />
+          <div class="card__content | flow">
+            <div class="card__content--container | flow">
+              <h2 class="card__title">Dr. RAMASWAMY VISHNUDAS</h2>
+
+              <h6 style="color: orange; opacity: 1; font-weight: bold;">External Gear Pump Technology</h6>
+
+              <p class="card__description fosm" style="font-size: 10.5px;">
+                This talk delves into the latest R&D trends in External Gear Pumps, which are vital for mobile and industrial fluid power systems. We will explore innovations such as noise reduction, low-speed & efficiency optimization, advancements in testing and development. Additionally, the presentation will highlight our collaborative efforts with universities, particularly our Advanced Engineering department, which fosters industry-academic partnerships and student engagement through internships and joint research projects. It also discusses collaborations with universities and our approach to nurturing future talent.
+               </p>
+            </div>
+          </div>
+        </article>
+      <article class="cardtalk">
+        <img
+          class="card__background"
+          src="https://media.licdn.com/dms/image/v2/D5603AQEMaIGt2t9Rbw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1698767338137?e=1731542400&v=beta&t=e0hElZzNueBirkkTMsDR8CbFkWIC5juIQTa6-iE2oYI"
+          alt="sd"
+          width="1920"
+          height="2200"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">MR. VISH RAJALINGAM</h2>
+            <h6 style="color: orange; opacity: 1; font-weight: bold;">Behind the Software-Defined Vehicles: The Computational Needs of Modern Mobility</h6>
+            <p class="card__description">
+              The automotive industry is undergoing a transformation driven by AI and ADAS. These innovations, coupled with the demand for advanced user experiences in infotainment, require significant computational power. GPUs, DSPs, and specialized AI Accelerators are ideal for handling the compute-intensive nature of modern mobility applications. This presentation will explore the AI workloads for ADAS and infotainment, discuss the advantages of GPU and DSP architectures, and demonstrate real-world use cases.
+            </p>
+          </div>
+        </div>
+      </article>
+      <article class="cardtalk">
+        <img
+        class="card__background"
+        src="https://media.licdn.com/dms/image/v2/D4D03AQElLwL8kkcDGg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1666146181586?e=1731542400&v=beta&t=21MK8J5Y5ZDPgjYQ8pSYQdY8_2qF0Xpmp_lbF5TF3QE"
+        alt="sd"
+        width="1920"
+        height="2200"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">MR. AVINASH GADEKAR</h2>
+
+            <h6 style="color: orange; opacity: 1; font-weight: bold;">Water Sector and opportunities</h6>
+
+            <p class="card__description">
+              Associate director, AECOM India Global Services Pvt. Ltd.
+            </p>
+          </div>
+        </div>
+      </article>
+      <article class="cardtalk">
+        <img
+          class="card__background"
+          src="https://media.licdn.com/dms/image/v2/C5103AQGF2SfCRrMWtA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516699331878?e=1731542400&v=beta&t=0hEd7pjb_oo7D6B6dJStzBYOcWRjgQHC6x87M7Z27OE"
+          alt="sd"
+          width="1920"
+          height="2200"
+          />
+          <div class="card__content | flow">
+            <div class="card__content--container | flow">
+              <h2 class="card__title">DR. MILINDA MAHAJAN</h2>
+
+              <h6 style="color: orange; opacity: 1; font-weight: bold;">Simplifying Complex Seismic Irregularities in Building Design</h6>
+              <p class="card__description">
+                Seismically irregular buildings have significant challenges in structural analysis and design due to their complex geometry and non-uniform distribution of mass, stiffness, and strength. These irregularities can cause unpredictable seismic responses during an earthquake, and may risk safety and stability. The talk will focus on the aspects of the earthquake analysis of building structures and a case study to deal with seismically irregular building, its retrofitting strategies to make it simple regular building.
+              </p>
+
+            </div>
+          </div>
+        </article>
+        <article class="cardtalk">
+          <img
+          class="card__background"
+          src="https://media.licdn.com/dms/image/v2/C5603AQGLcvCvgTkxIA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1607450044920?e=1731542400&v=beta&t=4barbgdmM9Ohfc2uVSH6YRfYyGb_wAOH1aa_fzTqeU0"
+          alt="sd"
+          width="1920"
+          height="2200"
+          />
+          <div class="card__content | flow">
+            <div class="card__content--container | flow">
+              <h2 class="card__title">MR. ARJUN MENON</h2>
+              <h6 style="color: orange; opacity: 1; font-weight: bold;">Building Core Generators for RISC-V<h6>
+                <p class="card__description">
+                  This talk will take you through a journey, which began with the fundamental motivation of constructing an open-source academic processor and evolved into developing highly configurable core generator architectures. Throughout the talk, we will explore technical and non-technical decisions that impact this ecosystem and the micro-architectural and scalability challenges that arise. Additionally, we will discuss some of the choices that were made to create a state-of-the-art embedded microprocessor portfolio with limited resources and a small team. 
+                </p>
+          </div>
+        </div>
+      </article>
+      <article class="cardtalk">
+        <img
+          class="card__background"
+          src="https://media.licdn.com/dms/image/v2/D5603AQHqoMcGnA8c1w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1684311550858?e=1731542400&v=beta&t=U3jRKcQjFmSGpQGKomvqDtA5cMiw29cEaWNInzISdKE"
+          alt="sd"
+          width="1920"
+          height="2200"
+        />
+        <div class="card__content | flow">
+          <div class="card__content--container | flow">
+            <h2 class="card__title">ADITHYA KUMAR O V</h2>
+
+            <h6 style="color: orange; opacity: 1; font-weight: bold;">The Curious Case of Good Engineering</h6>
+
+            <p class="card__description">
+              Senior software engineer, Composewell Technologies 
+            </p>
+          </div>
+        </div>
+      </article>
+
+  </div>
+  
+</section>
+<section id="events">
+  <div class="section-header" data-aos="fade-up">
+      <h2>Events</h2>
+  </div>
+  <div class="viscontainer">
+      
+    <div class="viscard">
+      <div class="visface visface1">
+      <div class="content">
+        <span class="stars"></span>
+        <h2 class="txt" style="font-size: 20px;">Lecture Series</h2>
+        <p class="txt" style="font-size: 15px;">
+          Ready to broaden your intellectual horizons? Become a part of IAC Lecture Series, where renowned professors from diverse disciplines share their expertise and insights on cutting-edge topics. This is more than just a lecture—it's an engaging experience that will inspire you, broaden your perspective, and connect you with the latest in knowledge.
+        </p>
+      </div>
+    </div>
+    <div class="visface visface2">
+      <h2>Lecture Series</h2>
+    </div>
+  </div>
+
+  <div class="viscard">
+    <div class="visface visface1">
+      <div class="content">
+        <span class="stars"></span>
+        <h2 class="txt" style="color: black; font-size: 20px;">Start-up booths</h2>
+        <p class="txt" style="font-size: 14px;">
+          Explore innovative startups founded by recent graduates, supported by TECHIN and IPTIF. These dynamic booths offer a platform for young entrepreneurs to share their journey from idea to execution. Engage with the founders, learn about their challenges, and discover how their startups are shaping the future. These booths provide a firsthand look at the cutting-edge innovations emerging from our alumni network.
+        </p>
+      </div>
+    </div>
+    <div class="visface visface2">
+      <h2 class="ab" style="font-size: 35px;">Start-up booths</h2>
+    </div>
+  </div>
+
+  <div class="viscard">
+    <div class="visface visface1">
+      <div class="content">
+        <span class="stars"></span>
+        <h2 class="txt" style="font-size: 20px;">Exhibition</h2>
+        <p class="txt" style="font-size: 15px;">
+          Unleash your creativity and showcase your innovative projects, products, and posters at the IAC Exhibition! This is a fantastic chance for students to present their work to professionals from various industries, receive valuable feedback, and potentially spark collaborations.
+        </p>
+      </div>
+    </div>
+    <div class="visface visface2">
+      <h2>Exhibition</h2>
+      
+    </div>
+  </div>
+  <div class="viscard">
+    <div class="visface visface1">
+      <div class="content">
+        <span class="stars"></span>
+        <h2 class="txt" style="font-size: 20px;">Panel Discussion</h2>
+        <p class="txt" style="font-size: 15px;">
+          Join a group of industry experts as they delve into key topics relevant to the industrial world. This session offers valuable insights into current trends and practical applications. This panel discussion is the perfect platform to ask questions and engage directly with the panelists, making this an invaluable chance to gain knowledge and advice from experienced professionals.
+        </p>
+      </div>
+    </div>
+    <div class="visface visface2">
+      <h2>Panel Discussion</h2>
+    </div>
+  </div>
+</div>
+ 
+</section>
+
+<section id="schedule" data-aos="fade-up">
+  <div class="section-header">
+      <h2>Schedule</h2>
+  </div>
+
+  <div class="schedule-buttons">
+    <button class="schedule-button schedule-day-button" onclick="handleScheduleDay(this)">Day 1</button>
+    <button class="schedule-button schedule-day-button" onclick="handleScheduleDay(this)">Day 2</button>
+  </div>
+
+  <div class="schedule-buttons">
+    <button class="schedule-button schedule-type-button" onclick="handleScheduleType(this)">CS and DS</button>
+    <button class="schedule-button schedule-type-button" onclick="handleScheduleType(this)">Electrical</button>
+    <button class="schedule-button schedule-type-button" onclick="handleScheduleType(this)">Mechanical</button>
+    <button class="schedule-button schedule-type-button" onclick="handleScheduleType(this)">Civil</button>
+    <button class="schedule-button schedule-type-button" onclick="handleScheduleType(this)">Chemistry</button>
+    <button class="schedule-button schedule-type-button" onclick="handleScheduleType(this)">Physics</button>
+    <button class="schedule-button schedule-type-button" onclick="handleScheduleType(this)">Maths</button>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <ul id="schedule-day1" class="schedule schedule-centered">
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>9 - 9:15 a.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title">Inaugural Ceremony &<br> Director's address</h3>
+              <p class="schedule-details">Venue: Saraswati A01-007</p>
+          </div>
+        </li>
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>9:15 - 9:25 a.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk by: </span><br> Dean ICSR, IIT Palakkad</h3>
+              <p class="schedule-details">Venue: Saraswati A01-007</p>
+          </div>
+        </li>
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>9:25 - 9:35 a.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk by: </span><br> Dean Academics, IIT Palakkad</h3>
+              <p class="schedule-details">Venue: Saraswati A01-007</p>
+          </div>
+        </li>
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>9:35 - 10:20 a.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Invited Talk by: </span><br>Chief Guest - Dr. Sreenivas Naidu</h3>
+              <p class="schedule-details"><span>Senior General Manager - IWZF Wind Power</span><br>Venue: Saraswati A01-007</p>
+          </div>
+        </li>
+
+        <!-- Keynote Speaker 1 -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>10:20 - 11:00 a.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk By Keynote Speaker:</span><br> Prof. Sreedevi Upadhyayula</h3>
+              <p class="schedule-details">
+                <span>Department of Chemical Engineering - IIT Delhi
+                  <br>Topic: Thermochemical Water Splitting Process Development
+                </span><br>
+                Venue: Saraswati A01-007
+              </p>
+          </div>
+        </li>
+
+
+        <!-- Tea Break 1 -->
+        <li class="schedule-item schedule-break">
+          <div class="schedule-info"></div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <p class="schedule-info-inner">11:00 - 11:30 a.m</p>
+              <h2 class="schedule-title">High Tea</h2>
+              <p class="schedule-details">Saraswati Atrium</p>
+          </div>
+        </li>
+
+        <!-- Lecture Talk1 -->
+        <li class="schedule-item lecture-t1">
+          <div class="schedule-info">
+              <span></span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"></h3>
+              <p class="schedule-details"></p>
+          </div>
+        </li>
+
+        <!-- Lecture Talk 2 -->
+        <li class="schedule-item lecture-t2">
+          <div class="schedule-info">
+              <span></span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"></h3>
+              <p class="schedule-details"></p>
+          </div>
+        </li>
+
+        <!-- Lunch Break -->
+        <li class="schedule-item schedule-break">
+          <div class="schedule-info"></div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <p class="schedule-info-inner">1:00 - 2:00 p.m</p>
+              <h2 class="schedule-title">Lunch Break</h2>
+              <p class="schedule-details">Agora Annexure</p>
+          </div>
+        </li>
+
+        <!-- Keynote Speaker 2 -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>2:15 - 3:00 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk By Keynote Speaker:</span><br>Prof. Satya Chakravarthy</h3>
+              <p class="schedule-details">
+                <span>Department of Aerospace Engineering - IIT Delhi</span><br>
+                Venue: Saraswati A01-007
+              </p>
+          </div>
+        </li>
+
+        <!-- Lecture Talk 3 -->
+        <li class="schedule-item lecture-t3">
+          <div class="schedule-info">
+              <span></span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"></h3>
+              <p class="schedule-details"></p>
+          </div>
+        </li>
+
+
+        <!-- Tea Break 2 -->
+        <li class="schedule-item schedule-break">
+          <div class="schedule-info"></div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <p class="schedule-info-inner">3:45 - 4:00 p.m</p>
+              <h2 class="schedule-title">Snacks Break</h2>
+              <p class="schedule-details">Saraswati Atrium</p>
+          </div>
+        </li>
+
+        <!-- Lecture Talk 4 -->
+        <li class="schedule-item lecture-t4">
+          <div class="schedule-info">
+              <span></span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"></h3>
+              <p class="schedule-details"></p>
+          </div>
+        </li>
+
+        <!-- Lecture Talk 5 -->
+        <li class="schedule-item lecture-t5">
+          <div class="schedule-info">
+              <span></span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"></h3>
+              <p class="schedule-details"></p>
+          </div>
+        </li>
+
+        <!-- Lecture Talk 6 -->
+        <li class="schedule-item lecture-t6">
+          <div class="schedule-info">
+              <span></span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"></h3>
+              <p class="schedule-details"></p>
+          </div>
+        </li>
+
+        <!-- Student Presenations -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>4:00 - 5:30 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title">Student Talks:</h3>
+              <p class="schedule-details">Venues: Sarswati A01- 007, 102, 103</p>
+          </div>
+        </li>
+      </ul>
+
+      <ul id ="schedule-day2" class="schedule schedule-centered">
+        <!-- Keynote Speaker 2 -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>9:30 - 10:15 a.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk By Keynote Speaker:</span><br>Mr. Aleem Rehman</h3>
+              <p class="schedule-details">
+                <span>Silicon Engineer - Microsoft
+                  <br>Topic: Evolution of Modern SoC Architectures for AI/ML Workload and High Bandwidth Computations
+                </span><br>
+                Venue: Saraswati A01-007
+              </p>
+          </div>
+        </li>
+
+        <!-- Keynote Speaker 4 -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>10:15 - 11:00 a.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk By Keynote Speaker:</span><br>Mr. Nahar Singh</h3>
+              <p class="schedule-details">
+                <span>Head Of ML in Continental Corporation, Alumnus of IIT Guwahati
+                  <br>Topic: AI Trends in Automotive Field
+                </span><br>
+                Venue: Saraswati A01-007
+              </p>
+          </div>
+        </li>
+
+        <!-- Startup Booths - exhibition-->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>9:00 - 11:30 a.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title">Startup booths &<br> exhibitions</h3>
+              <p class="schedule-details">Venue: Saraswati</p>
+          </div>
+        </li>
+
+        <!-- TCS Reaseach Cafe -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>10:30 - 1:00 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title">TCS Reaseach Cafe</h3>
+              <p class="schedule-details">Venue: Saraswati A01-002</p>
+          </div>
+        </li>
+
+
+        <!-- Tea Break 1 -->
+        <li class="schedule-item schedule-break">
+          <div class="schedule-info"></div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <p class="schedule-info-inner">11:30 - 11:45 a.m</p>
+              <h2 class="schedule-title">Tea Break</h2>
+              <p class="schedule-details">Saraswati Atrium</p>
+          </div>
+        </li>
+
+        <!-- Panel Discussion -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>11:45 a.m - 12:45 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title">Panel Discussion</h3>
+              <p class="schedule-details">Venue: Saraswati A01-007</p>
+          </div>
+        </li>
+
+        <!-- Closing Cermony -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>12:45 - 1:00 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title">Closing ceremony</h3>
+              <p class="schedule-details">Venue: Saraswati A01-007</p>
+          </div>
+        </li>
+
+        <!-- Lunch Break -->
+        <li class="schedule-item schedule-break">
+          <div class="schedule-info"></div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <p class="schedule-info-inner">1:00 - 2:00 p.m</p>
+              <h2 class="schedule-title">Lunch Break</h2>
+              <p class="schedule-details">Agora Annexure</p>
+          </div>
+        </li>
+
+        <!-- Student Talk -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>4:00 - 4:20 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk by Student:</span><br>Miss. Sangeeta V.</h3>
+              <p class="schedule-details">
+                <span>Ph.D. Scholar, ESSENCE - IIT Palakkad
+                  <br>Topic: Urban mining for circular economy: Resource recovery from source separated urine
+                </span><br>
+                Venues: Sarswati A01- 102
+              </p>
+          </div>
+        </li>
+
+        <!-- Student Talk -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>4:45 - 5:00 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk by Student:</span><br>Mr. Ayyappadas R.</h3>
+              <p class="schedule-details">
+                <span>Ph.D. Scholar, Electrical Engineering - IIT Palakkad
+                  <br>Topic: Real-time embedded HIL testbed for Networked Control Systems
+                </span><br>
+                Venues: Sarswati A01- 102
+              </p>
+          </div>
+        </li>
+
+        <!-- Student Talk -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>4:45 - 5:05 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk by Students:</span><br>Mr. Siva K.M.R, Mainkantan R.S., and Tirumala.</h3>
+              <p class="schedule-details">
+                <span>B.Tech, Electrical Engineering- IIT Palakkad
+                  <br>Topic: Acoustic Camera
+                </span><br>
+                Venues: Sarswati A01- 102
+              </p>
+          </div>
+        </li>
+
+        <!-- Student Talk -->
+        <li class="schedule-item">
+          <div class="schedule-info">
+              <span>5-10 - 5:30 p.m</span>
+          </div>
+          <div class="schedule-marker"></div>
+          <div class="schedule-content">
+              <h3 class="schedule-title"><span>Talk by Students:</span><br>Mr. Ashish Kumar Singh & Rithvik</h3>
+              <p class="schedule-details">
+                <span>B.Tech, Civil & Electrical Engineering - IIT Palakkad
+                  <br>Topic: Green Wheels: Automated and Efficient Hydroponic Mobile Farm
+                </span><br>
+                Venues: Sarswati A01- 102
+              </p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  
+</section>
+
+ <section id="gallery" data-aos="fade-up">
+
+        <div class="container">
+          <div class="section-header">
+            <h2>Flashbacks</h2>
+            <p>Check our gallery from the recent events</p>
+          </div>
+        </div>
+        <div align="center">
+          <h1>Previous IAC Reports</h1>
+          <a href="https://drive.google.com/file/d/1LYdao1W5X8KYCzM1hUMkZCEThtiNYg_q/view">IAC 2.0</a> |
+          <a href="https://drive.google.com/file/d/1KmuwssRx8omlOaQTAKPogoDfA3dquZx_/view">IAC 3.0</a> |
+          <a href="https://drive.google.com/file/d/12ryvcerPU0E0pTcDVSVvmxOd5WlzOSs3/view">IAC 4.0</a> |
+          <a href="https://drive.google.com/file/d/1I8zQ8Ncr427aMWyFdZvJlzKRDXCCBRNn/view">IAC 5.0</a>
+        </div>
+
+        <div id="slider" >
+            <div class="slide">
+              <div class="slide-content">
+                <img src="assets/img/gallery/1.jpg" alt=""/>
+              </div>
+            </div>
+
+            <div class="slide">
+                <div class="slide-content">
+                  <img src="assets/img/gallery/2.jpg" alt=""/>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-content">
+                  <img src="assets/img/gallery/3.jpg" alt=""/>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-content">
+                  <img src="assets/img/gallery/4.jpg" alt=""/>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-content">
+                  <img src="assets/img/gallery/5.jpg" alt=""/>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-content">
+                  <img src="assets/img/gallery/6.jpg" alt=""/>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-content">
+                  <img src="assets/img/gallery/7.jpg" alt=""/>
+                </div>
+              </div>
+
+              <div class="slide">
+                <div class="slide-content">
+                  <img src="assets/img/gallery/8.jpg" alt=""/>
+                </div>
+              </div>
+        </div>
+        
+          
+        </div>
+        </div>
+  
+      </section>
+      
+    <section id="supporters">
+
+        <div class="container">
+          <div class="section-header">
+            <h2>Sponsors</h2>
+          </div>
+          
+
+          <div class="sponsors-container">
+
+
+
+          <div class="sponsor">
+            <img style="  padding-top: 50px; " src="https://innovativeinc.in/images/logo.jpg" alt="Innovative Instruments">
+            <!-- <p style="margin-top: 10px; font-size: 40px; padding-top: 0px; padding-bottom: 10px;"class="sponsor-name">Innovative Instruments</p> -->
+        </div>
+  
+        <div class="sponsor">
+          <img style="  padding-top: 30px; "   src="../public/assets/sponsorsimg/Anritsu logo.png" alt="Anritsu">
+          <!-- <p style="margin-top: 10px; font-size: 50px; padding-top: 0px; padding-bottom: 10px;" class="sponsor-name">Anritsu</p> -->
+      </div>
+
+
+          <div class="sponsor">
+          <img style="   padding-top: 30px; "   src="../public/assets/sponsorsimg/canara_bank.png" alt="Canara Bank">
+          <!-- <p style="margin-top: 10px; font-size: 50px; padding-top: 0px; padding-bottom: 10px;" class="sponsor-name">Anritsu</p> -->
+      </div>
+  
+      <div class="sponsor">
+              <img style="   padding-bottom: 0px; "   src="../public/assets/sponsorsimg/sinetec.jpeg" alt="Sinetec">
+              <!-- <p style="margin-top: 10px; font-size: 50px; padding-top: 0px; padding-bottom: 10px;" class="sponsor-name">Anritsu</p> -->
+          </div>
+  
+ 
+            <div style="height: 150px;" class="sponsor">
+                <img style="padding-top: 10px; width: 200px;" src="../public/assets/sponsorsimg/sponsor.png" alt="Genesys">
+                <!-- <p class="sponsor-name">Genesys</p> -->
+            </div>
+
+
+
+          <div class="sponsor">
+            <img style="padding-top: 70px; width: 200px;"   src="../public/assets/sponsorsimg/technilab.jpeg" alt="Technilab Instruments">
+            <!-- <p style="margin-top: 100px;" class="sponsor-name">Technilab Instruments</p> -->
+        </div>
+
+          <!-- <div style="display: flex; justify-content: center; align-items: center;" class="sponsor-img">
+            <img  style="height: 400px; width: auto; " src="assets/sponsorsimg/sponsor_img.png" alt="sponsor">
+          </div>
+          <div style="margin-top: 40px; display: flex; justify-content: center; align-items: center;"  class="supporte_img">
+            <img style="height: 400px; width: auto; " src="assets/sponsorsimg/supporters_img.png" alt="supporter" class="supporter">
+          </div> -->
+            
+        </div>
+
+
+
+      <section id="supportpart">
+        <div class="container">
+          <div class="section-header">
+            <h2>Support Partners</h2>
+          </div>
+          <div class="sponsor">
+            <img style="padding-top: 40px; "   src="https://iptif.tech/wp-content/uploads/2022/02/iptif_logo_md.png" alt="Anritsu">
+            <p style="margin-top: 10px; font-size: 35px; padding-top: 0px;" class="sponsor-name">IPTIF</p>
+        </div>
+        <div class="sponsor">
+          <img style="padding-top: 20px; height: 200px; width: 200px;" src="https://techin-iitpkd.org/wp-content/uploads/2022/08/Techin-LOGO-2.jpg" alt="Innovative Instruments">
+          <p style="margin-top: 10px; font-size: 40px; padding-top: 0px;"class="sponsor-name">TECHIN</p>
+      </div>
+      </section>
+
+
+
+
+          <div align="center"> If you are interested in sponsoring the event,
+            please contact <a href="mailto:ilo@iitpkd.ac.in">ilo@iitpkd.ac.in</a> or
+            <a href="mailto:iac@iitpkd.ac.in">iac@iitpkd.ac.in</a>
+          </div>
+  
+        </div>
+  
+      </section>
+    
+
+    <section id="team" style="background-color: var(--bg-color2);">
+        <div class="section-header">
+            <h2>Meet The Team</h2>
+        </div>
+    
+        <div style="display: flex; align-items: center; width: 61%; align-self: center;">
+            <hr class="thick-line">
+            <h2 style="padding-left: 20px;">Organizing Team</h2>
+        </div>
+        <div class="container-fluid" style="width: 60%;">
+            <div class="row justify-content-center" id="organizing-team">
+            </div>
+        </div>        
+    
+        <div style="display: flex; align-items: center; width: 61%; align-self: center;">
+            <h2 style="padding-right: 20px;">Department Coordinators</h2>
+            <hr class="thick-line">
+        </div>
+        <div class="container-fluid" style="width: 60%;">
+            <div class="row justify-content-center" id="department-cordinators">
+            </div>
+        </div>
+    </section>
+    
+
+
+    <section id="reach-us">
+        <div class="section-header">
+            <h2>Reach Us</h2>
+        </div>
+
+        <div class="container-fluid">
+  
+          <div class="row contact-info" align="center">
+  
+            <div style="display: flex; justify-content: space-between; padding: 20px;">
+              <div class="col-md-6" style="flex: 1; padding: 10px;">
+                  <div class="contact-address" style=" padding: 15px; border-radius: 8px;">
+                      <i class="bi bi-geo-alt" style="font-size: 24px; color: #333; display: block; margin-bottom: 10px;"></i>
+                      <h3 style="margin: 0 0 10px; font-size: 18px; color: #333;">Address</h3>
+                      <address style="margin: 0; font-size: 16px; color: #555;">Nila Campus, IIT Palakkad, Kanjikode, Palakkad</address>
+                  </div>
+              </div>
+      
+              <div class="col-md-6" style="flex: 1; padding: 10px;">
+                  <div class="contact-email" style=" padding: 15px; border-radius: 8px;">
+                      <i class="bi bi-envelope" style="font-size: 24px; color: #333; display: block; margin-bottom: 10px;"></i>
+                      <h3 style="margin: 0 0 10px; font-size: 18px; color: #333;">Email</h3>
+                      <p style="margin: 0; font-size: 16px; color: #555;"><a href="mailto:iac@iitpkd.ac.in" style="color: #007bff; text-decoration: none;">iac@iitpkd.ac.in</a></p>
+                  </div>
+              </div>
+          </div>
+  
+          <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3919.069531940834!2d76.7244598!3d10.8059866!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba86eb5b2e20413%3A0x6ac0bc1d9e6a7141!2sIIT%20Palakkad!5e0!3m2!1sen!2sin!4v1692870509473!5m2!1sen!2sin"
+              width="90%" height="400" style="border:0; border-radius: 7px;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+  
+        </div>
+      </section>
+
+    <footer>
+        <div class="footer-content">
+          <img class="logo_wide" src="assets/img/logoiit.png" alt="" title="" style="width: auto; height: 8vw">
+        </div>
+        <div class="footer-bottom">
+          <div>
+            &copy; Copyright <strong>IAC 6.0</strong>. All Rights Reserved
+          </div>
+        </div>
+      </footer>
+
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/slider.js"></script>
+    <script src="assets/js/focus.js"></script>
+    <script>
+        const speakerCards = document.querySelectorAll('.speaker-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-focus');
+                } else {
+                    entry.target.classList.remove('in-focus');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        speakerCards.forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+    <script>document.addEventListener("DOMContentLoaded", function() {
+      const speakerCards = document.querySelectorAll('.speaker-card');
+  
+      const handleScroll = () => {
+          const windowHeight = window.innerHeight;
+          const pointerPos = window.scrollY + (windowHeight / 2);
+  
+          // Remove active class from all speaker cards
+          speakerCards.forEach((card) => {
+              card.classList.remove('active');
+          });
+  
+          // Add active class to the card in focus
+          speakerCards.forEach((card) => {
+              const rect = card.getBoundingClientRect();
+              const cardTop = rect.top + window.scrollY;
+  
+              if (cardTop < pointerPos && cardTop + rect.height > pointerPos) {
+                  card.classList.add('active');
+              }
+          });
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  });
+  
+  
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const paragraphs = document.querySelectorAll('.paragraph');
+  
+      const handleScroll = () => {
+          let foundActive = false; // To ensure only one paragraph gets full opacity
+  
+          paragraphs.forEach(paragraph => {
+              const rect = paragraph.getBoundingClientRect();
+              // Check if the paragraph is in the viewport
+              if (rect.top >= 0 && rect.top <= window.innerHeight && !foundActive) {
+                  paragraph.classList.add('active'); // Add active class
+                  foundActive = true; // Set flag to true to avoid multiple active classes
+              } else {
+                  paragraph.classList.remove('active'); // Remove active class
+              }
+          });
+      };
+  
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScroll);
+      // Initial call to set the active paragraph on page load
+      handleScroll();
+  });
+  
+  
+  
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      const order = [1, 2, 4, 3, 5, 6, 8, 7]; // Specified order for card animation
+  
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  const cardIndex = Array.from(cards).indexOf(entry.target) + 1;
+                  const orderIndex = order.indexOf(cardIndex);
+                  if (orderIndex !== -1) {
+                      setTimeout(() => {
+                          entry.target.classList.add('visible');
+                      }, orderIndex * 200); // Delay based on order for smooth sequential animation
+                  }
+              }
+          });
+      }, { threshold: 0.5 }); // Trigger when 50% visible
+  
+      cards.forEach(card => {
+          observer.observe(card);
+      });
+  });
+  
+  
+  
+  </script>
+  <script>const sliderList = document.getElementById("slider");
+    const initialNumberSlides = sliderList.children.length;
+    let nSlides = 3;
+    let centralSlide = 1;
+    let slideNumber = 100 / nSlides;
+    resetSlides(slideNumber);
+    
+    function resetSlides(number) {
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((slide) => (slide.style.width = `${number}%`));
+        slideNumber = number;
+    }
+    
+    function calculateCentralSlide(numVisibleItems) {
+        return Math.ceil(numVisibleItems / 2);
+    }
+    
+    function addActiveElement(centralItem, totalVisibleItems) {
+        const sliderItems = document.querySelectorAll(".slide-content");
+        sliderItems.forEach((item) => item.classList.remove("active"));
+    
+        const central = sliderItems[Math.floor(centralItem)];
+        central.classList.add("active");
+    
+        if (totalVisibleItems % 2 === 0) {
+            const central2 = sliderItems[Math.floor(centralItem) + 1];
+            central2.classList.add("active");
+    
+            if (totalVisibleItems == 2) {
+                const central3 = sliderItems[Math.floor(centralItem) - 1];
+                central3.classList.add("active");
+            }
+        }
+    }
+    
+    addActiveElement(centralSlide, nSlides);
+    
+    function moveSlide(direction) {
+        const firstItem = sliderList.firstElementChild;
+        const slideMargin = slideNumber * direction;
+        
+        // Update the margin based on the direction
+        firstItem.style.marginLeft = `calc(-${slideNumber * direction}%)`;
+    
+        setTimeout(() => {
+            firstItem.style.marginLeft = "";
+            sliderList.appendChild(firstItem);
+            addActiveElement(centralSlide + direction, nSlides);
+        }, 300);
+    }
+    
+    function autoScroll() {
+        moveSlide(1); // Move to the next slide automatically
+    }
+    
+    setInterval(autoScroll, 2500);
+    </script>
+   
+<script>
+  window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+
+    // Minimum display time for the preloader (in milliseconds)
+    const minimumPreloaderTime = 1500;
+
+    // Record the time when the preloader starts
+    const preloaderStartTime = new Date().getTime();
+
+    // Function to hide the preloader
+    function hidePreloader() {
+        const currentTime = new Date().getTime();
+        const elapsedTime = currentTime - preloaderStartTime;
+
+        if (elapsedTime < minimumPreloaderTime) {
+            setTimeout(hidePreloader, minimumPreloaderTime - elapsedTime);
+        } else {
+            preloader.style.opacity = '0';
+            preloader.style.transition = 'opacity 0.5s ease';
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 500); // Duration matches the transition time
+        }
+    }
+
+    hidePreloader(); // Call the function to start the process
+});
+
+</script>
+
+</body>
+</html>

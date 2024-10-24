@@ -9,3 +9,7 @@ def main():
 @app.route("/gallery")
 def gallery():
     return render_template("gallery.html")
+
+@app.route("/meettheteam")
+def team():
+    return render_template("team.html")

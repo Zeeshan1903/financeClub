@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finance Club</title>
     <style>
+
       /* Style for the video */
       .video-container {
         position: fixed;
@@ -90,6 +91,17 @@
         font-size: 59px;
         width: 100px;
       }
+      .about{
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        top: 100vh;
+        overflow: hidden;
+      }
+      .img{
+        object-fit: cover; 
+        object-position: center;
+      }
     </style>
   </head>
   <body>
@@ -119,6 +131,9 @@
             <p>
         Welcome to the Finance Club! Join us for exciting events, workshops, and networking opportunities.
       </p>
+    </div>
+    <div class="about">
+        <img class="img" src="/static/bgabout.jpg" alt="">
     </div>
   </body>
 </html>

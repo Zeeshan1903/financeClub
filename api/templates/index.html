@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finance Club</title>
     <style>
-		body{
-			background-color: black;
-		}
+
       /* Style for the video */
       .video-container {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         overflow: hidden;
         z-index: -1;
       }
@@ -107,11 +105,11 @@
       }
       .glassmorphic-textbox {
       position: relative;
-      width: 500px;
+      width: 40vw;
       padding: 20px;
       top: 120vh;
-      left: 50vw;
-      background: rgba(255, 255, 255, 0.3); 
+      left: 27vw;
+      background: rgba(255, 255, 255, 0.2); 
       border-radius: 15px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
       backdrop-filter: blur(10px); 
@@ -130,100 +128,17 @@
       font-size: 18px;
       line-height: 1.6;
     }
-
+    .aboutfin{
+         color: black; 
+        text-shadow: 1px 1px 1px #c195e9; 
+		text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+    }
     .aboutpara{
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         color: white;
+		text-align: center;
     }
-    .slideshow{
-      position: absolute;
-      left: 40vw;
-      
-      top: 250vh;
-  margin: 0 auto;
-  padding-top: 50px;
-  height: 700px;
-  perspective: 1000px;
-}
-.content{
-  margin: auto;
-  width: 150px;
-  perspective: 1000px;
-  position:relative;
-  padding-top: 80px;
-  transform-style: preserve-3d;
-}
-.slider-content{
-  width: 100%;
-  position:absolute;
-  float:right;
-  animation: rotate 15s infinite linear;
-  transform-style: preserve-3d;
-}
-.slider-content:hover{
-  cursor: pointer;
-  animation-play-state: paused;
-}
-.slider-content figure{
-  width:180px;
-  height:120px;
-  border:1px solid #555;
-  overflow:hidden;
-  position:absolute;
-}
-.slider-content img{
-  image-rendering: auto;
-  transition: all 300ms;
-  width: 100%;
-  height: 100%;
-}
-.slider-content img:hover{
-   transform: scale(1.2); 
-   transition: all 300ms; 
-} 
-.shadow{ 
-   position: absolute; 
-   box-shadow: 0px 0px 0px #000; 
-}
-.slider-content figure:nth-child(1){
-  transform:rotateY(0deg) translateZ(300px);
-}
- 
-.slider-content figure:nth-child(2){
-  transform:rotateY(40deg) translateZ(300px);
-}
-.slider-content figure:nth-child(3){
-  transform:rotateY(80deg) translateZ(300px);
-}
-.slider-content figure:nth-child(4){
-  transform:rotateY(120deg) translateZ(300px);
-}
-.slider-content figure:nth-child(5){
-  transform:rotateY(160deg) translateZ(300px);
-}
-.slider-content figure:nth-child(6){
-  transform:rotateY(200deg) translateZ(300px);
-}
-.slider-content figure:nth-child(7){
-  transform:rotateY(240deg) translateZ(300px);
-}
-.slider-content figure:nth-child(8){
-  transform:rotateY(280deg) translateZ(300px);
-}
-.slider-content figure:nth-child(9){
-  transform:rotateY(320deg) translateZ(300px);
-}
-@keyframes rotate {
-  from{
-    transform: rotateY(0deg);
-  }
-  to{
-      transform: rotateY(360deg);
-  }
-}
-.aboutfin{
-	color: black;
-}
     </style>
   </head>
   <body>
@@ -258,25 +173,10 @@
         <!-- <img class="img" src="/static/bgabout.jpg" alt=""> -->
     </div>
     <div class="glassmorphic-textbox">
- 
-        <h1 class="aboutfin">About us....</h1>  
-		<!-- enlarge this wholet thing -->
+        <!-- <h1 class="aboutthe">The </h1> -->
+        <h1 class="aboutfin">About Us...</h1>
         <p class="aboutpara">The Finance Club is dedicated to enhancing financial literacy and practical experience in the student community. The club often organises events on stock analysis, does case studies on various IPOs, encourages start-up pitches via competitions and even arranges financial tips from the gurus of the financial world for the IIT Palakkad fraternity. But the Finance Club is not just about numbers and statistics; it's also about fostering a culture of curiosity, collaboration, and financial innovation. Our members come from diverse backgrounds and share a common passion for unravelling the mysteries of the financial world.</p>
       </div>
-      <section class="slideshow">
-        <div class="content">
-           <div class="slider-content">
-              <figure class="shadow"><img src="/static/bgabout.jpg"></figure>
-              <figure class="shadow"><img src="/static/bgabout.jpg"></figure>
-              <figure class="shadow"><img src="/static/bgabout.jpg"></figure>
-              <figure class="shadow"><img src="/static/z.jpg"></figure>
-              <figure class="shadow"><img src="/static/bgabout.jpg"></figure>
-              <figure class="shadow"><img src="/static/bgabout.jpg"></figure>
-              <figure class="shadow"><img src="/static/bgabout.jpg"></figure>
-              <figure class="shadow"><img src="/static/bgabout.jpg"></figure>
-              <figure class="shadow"><img src="/static/bgabout.jpg"></figure>
-           </div>
-        </div>
-     </section>
+      
   </body>
 </html>

@@ -90,11 +90,74 @@
         font-size: 59px;
         width: 100px;
       }
+
+
+      /* body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0; 
+} */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 99vw; /* Full width of the viewport */
+  height: 80px;
+  padding: 1vw 1vh; 
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 15px 15px; /* Rounded corners at the bottom */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: fixed; 
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  z-index: 1000; /* Ensure it stays above other content */
+  /* margin-right:1000px; */
+  padding-right: 20px;
+}
+
+.bigele.logo {
+  font-size: 3vw; /* Responsive font size */
+  font-weight: bold;
+  color: white; /* Adjust color as needed */
+}
+
+.bigele.buttonsnav {
+  display: flex;
+  gap: 2vw; /* Space between buttons using vw */
+}
+
+.btnnav {
+  text-decoration: none;
+  color: white;
+  padding: 1vw 2vw; /* Responsive padding */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btnnav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff; /* Highlight text color */
+}
+
+/* Optional: Add a media query for responsiveness */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .bigele.buttonsnav {
+    flex-wrap: wrap;
+  }
+}
+
     </style>
   </head>
   <body>
     <div class="nav">
-      <div class="bigele logo"></div>
+      <div class="bigele logo">Logo</div>
       <div class="bigele buttonsnav">
         <a href="" class="btnnav">Home</a>
         <a href="" class="btnnav">Sponsor</a>

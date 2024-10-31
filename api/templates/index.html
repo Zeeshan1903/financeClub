@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Club</title>
+    <style>
+      /* Style for the video */
+      .video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .background-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        object-fit: cover;
+      }
+
+      /* Style for the navigation */
+      .nav {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1;
+        color: white;
+      }
+
+      .bigele {
+        display: inline-block;
+      }
+
+      .buttonsnav {
+        margin-left: 20px;
+      }
+
+      .btnnav {
+        color: white;
+        text-decoration: none;
+        margin-right: 15px;
+      }
+
+      /* Style for the text box */
+      .textbox {
+        position: absolute;
+        top: 50%;
+        right: 40px;
+        width: 500px;
+        /* background-color: rgba(0, 0, 0, 0.6); Transparent background */
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 2; /* Higher than video */
+        transform: translateY(-50%); /* Vertically center the box */
+    }
+    
+    /* Optional styling for text inside the box */
+    .textbox .fbox .the , .finance{
+        color: white;
+        font-size: 120px;
+        margin-bottom: 10px;
+    }
+    
+    .textbox  p {
+        color: white;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+    .fbox{
+        display: flex;
+        
+    }
+    .the{
+        font-size: 454px;
+        margin: 10px;
+    }
+    .finance{
+          color: #631CA6;
+        font-size: 59px;
+        width: 100px;
+      }
+
+
+      /* body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0; 
+} */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 99vw; 
+  height: 80px;
+  padding: 1vw 1vh; 
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 15px 15px; 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: 1000; 
+ 
+  padding-right: 20px;
+}
+
+.bigele.logo {
+  font-size: 3vw; /* Responsive font size */
+  font-weight: bold;
+  color: white; /* Adjust color as needed */
+}
+
+.bigele.buttonsnav {
+  display: flex;
+  gap: 2vw; /* Space between buttons using vw */
+}
+
+.btnnav {
+  text-decoration: none;
+  color: white;
+  padding: 1vw 2vw; /* Responsive padding */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btnnav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff; /* Highlight text color */
+}
+
+/* Optional: Add a media query for responsiveness */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .bigele.buttonsnav {
+    flex-wrap: wrap;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="bigele logo">Logo</div>
+      <div class="bigele buttonsnav">
+        <a href="" class="btnnav">Home</a>
+        <a href="" class="btnnav">Sponsor</a>
+        <a href="" class="btnnav">Gallery</a>
+        <a href="" class="btnnav">Meet the team</a>
+      </div>
+    </div>
+
+    <div class="video-container">
+      <video autoplay muted loop class="background-video">
+        <source src="/static/bgmain.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="textbox">
+        <div class="fbox">
+
+            <div class="the"><i>The</i></div>
+            <div class="finance"><b>Finance Club</b></div>
+        </div>
+            <p>
+        Welcome to the Finance Club! Join us for exciting events, workshops, and networking opportunities.
+      </p>
+    </div>
+  </body>
+</html>
